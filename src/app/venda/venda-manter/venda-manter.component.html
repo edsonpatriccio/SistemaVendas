@@ -1,0 +1,111 @@
+<app-layout>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Venda - Incluir</h5>
+      <div class="row">
+        <div class="form-group col-lg-12">
+          <label for="cliente" class="control-label">Cliente:</label>
+          <select [(ngModel)]="venda.cliente" class="form-control">
+            <option [ngValue]="null">Selecione</option>
+            <option *ngFor="let cliente of listaCliente" [ngValue]="cliente">{{cliente.nome}}</option>
+          </select>
+        </div>
+
+        <div class="form-group col-6">
+
+          <label for="venda.codigo" class="control-label">Codigo da venda:</label>
+          <!--input especial do bootstrap para com div's para dar efeito ao campo-->
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text fa fa-search" id="btnGroupAddon">&#10150;</div>
+            </div>
+            <input type="text" class="form-control" placeholder="Quantidade do produto" aria-label="Input group example"
+              aria-describedby="btnGroupAddon" [(ngModel)]="venda.codigo">
+          </div> <!--fim input-group-->
+        </div>
+
+        <div class="form-group col-lg-6">
+          <label for="venda.dataVendaProduto" class="control-label">Data da venda:</label>
+          <input type="date" class="form-control" [(ngModel)]="venda.dataVendaProduto" />
+        </div>
+
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Adicionar Produto</h5>
+          <div class="row">
+            <div class="form-group col-8">
+              <label for="cliente" class="control-label">Produto:</label>
+              <select [(ngModel)]="vendaProduto.produto" class="form-control">
+                <option [ngValue]="null">Selecione</option>
+                <option *ngFor="let produto of listaProduto" [ngValue]="produto">{{produto.nome}}</option>
+              </select>
+            </div>
+
+            <div class="form-group col-4">
+
+              <label for="produto.quantidade" class="control-label">Quantidade:</label>
+              <!--input especial do bootstrap para com div's para dar efeito ao campo-->
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <div class="input-group-text fa fa-search" id="btnGroupAddon">&#10150;</div>
+                </div>
+                <input type="text" class="form-control" placeholder="Quantidade do produto"
+                  aria-label="Input group example" aria-describedby="btnGroupAddon"
+                  [(ngModel)]="vendaProduto.quantidade">
+              </div>
+              <!--fim input-group-->
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-bottom: 20px;">
+            <div class="col-lg-12">
+              <button type="button" class="btn btn-primary" style="margin-right: 10px;"
+                (click)="adicionar()">Adicionar</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Codigo da venda</th>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Data da venda</th>
+                    <th>Excluir</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let vendaProduto of venda.listaVendaProduto">
+                    <th>{{venda.codigo}}</th>
+                    <th>{{vendaProduto.produto.nome}}</th>
+                    <th>{{vendaProduto.quantidade}}</th>
+                    <td>{{venda.dataVendaProduto | date : 'dd/MM/yyyy h:mm:ss a zzzz' }}</td>
+                    <th><a style="cursor: pointer;" (click)="removerproduto(vendaProduto)">
+                        <p class="text-danger">X</p>
+                      </a>
+                    </th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="row" style="margin-bottom: 20px; margin-top: 20px;">
+        <div class="col-lg-12">
+          <button type="button" class="btn btn-success" style="margin-right: 10px;" (click)="incluir()">Incluir</button>
+          <button type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="voltar()">Voltar</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</app-layout>
