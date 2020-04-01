@@ -1,2 +1,2 @@
 # SistemaVendas
-Projeto Sistema de vendas Angular - PROCENGE turma 01 / Aluno: Edson Patrício
+Curso imersão em Angular - PROCENGE turma 01 / Aluno: Edson Patrício. Projeto Sistema de vendas Angular
